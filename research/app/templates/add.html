@@ -1,0 +1,39 @@
+<html>
+<body>
+<title>Research Management Tool</title>
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{%static '/app/bootstrap/css/bootstrap.css' %}">
+    <meta charset="UTF-8">
+    <title>Welcome to Research Management Tool</title>
+</head>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/app/">Research Management Tool</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/app/">Home</a></li>
+      <li><a href="add">Add/Edit a Research</a></li>
+    </ul>
+  </div>
+</nav>
+<h1 align="center">Add/Edit a research<br><br></h1>
+{% if msg %}
+<p class="alert alert-success">{{msg}}</p>
+{% endif %}
+<form method="post" action="add">
+	{% csrf_token %}
+	<table	style="width:600px" align="center" class="table">
+        <input type="hidden" name="p_id" value="{{id}}">
+		{{form}}
+	</table>
+	<br>
+	<p align="center">
+	<input class="btn btn-default" type="submit">
+	</p>
+</form>
+</body>
+</html>

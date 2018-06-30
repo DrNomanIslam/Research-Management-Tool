@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{%static '/app/bootstrap/css/bootstrap.css' %}">
+    <meta charset="UTF-8">
+    <title>Welcome to Research Management Tool</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/app/">Research Management Tool</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/app/">Home</a></li>
+      <li><a href="add">Add a Research</a></li>
+    </ul>
+  </div>
+</nav>
+<h1 align="center">List of publications</h1><br><br>
+{% if msg %}
+<div class="alert alert-success">{{msg}}</div>
+{% endif %}
+<div class="container">
+<table align="center" class="table table-condensed">
+    <tr>
+        <th>First author name</th>
+        <th>Second author name</th>
+        <th>Third author name</th>
+        <th>Title</th>
+        <th>Journal</th>
+        <th>Year of publication</th>
+        <th>Volume</th>
+        <th>Issue</th>
+        <th>pp.</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+{% for p in pubs %}
+
+    <tr><td>{{p.first_author_name}}</td>
+        <td>{{p.second_author_name}}</td>
+        <td>{{p.third_author_name}}</td>
+        <td>{{p.title}}</td>
+        <td>{{p.journal }}</td>
+        <td>{{p.year_of_publication}}</td>
+        <td>{{p.volume }}</td>
+        <td>{{p.issue }}</td>
+        <td>{{pp }}</td>
+        <td><a href="/app/edit/{{p.id}}">edit</a></td>
+        <td><a href="/app/delete/{{p.id}}">delete</a></td>
+
+    </tr>
+{% endfor %}
+</table>
+</div>
+</body>
+</html>
